@@ -13,11 +13,11 @@ import os
 
 
 app = FastAPI()
-templates = Jinja2Templates(directory="templates")  
+  
 
 @app.get("/")
 def read_form(request: Request):
-    return templates.TemplateResponse("upload_form.html", {"request": request})
+    return  {"request": request}
 
 @app.post("/upload/")
 async def upload_images(request: Request, files: List[UploadFile] = File(...)):
@@ -56,9 +56,9 @@ async def upload_images(request: Request, files: List[UploadFile] = File(...)):
     result_gender = find_pattern.find_gender_patterns(data)
     print("getting the last value :",result_gender)
         
-    success_message = f"Check Your Details!!!"
-    return templates.TemplateResponse("result1.html", {"request": request, "name": result_name ,
+    
+    return  {"request": request, "name": result_name ,
                                                        'dob': result_dob ,"gender":result_gender,'aadhar_number':result_aahaar_number,
-                                                       'address':result_address, "message": success_message},)
+                                                       'address':result_address,}
 
 
