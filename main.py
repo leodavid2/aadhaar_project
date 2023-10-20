@@ -49,7 +49,7 @@ async def upload_images(files: List[UploadFile] = File(...), request: Request = 
 
             data += sampledata
         except Exception as e:
-            logging.error(f"Error processing image: {e}")
+            logging.exception("Error processing image")
             raise HTTPException(status_code=500, detail="Internal Server Error")
 
     # Find all kinds of Aadhaar numbers
