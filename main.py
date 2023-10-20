@@ -1,64 +1,76 @@
-from fastapi import FastAPI, File, UploadFile, Request,Form,HTTPException,Depends
-from fastapi.templating import Jinja2Templates
+import logging
+# Configure logging
+logging.basicConfig(level=logging.INFO)  # Set the desired logging level
+from fastapi import FastAPI, File, UploadFile, Request, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from typing import List
+from pydantic import BaseModel
 from PIL import Image
 import pytesseract
 from io import BytesIO
-import re
-from typing import List
-# from sqlalchemy.orm import Session
-#users modules to created
-# from database1 import SessionLocal, User
 from pattern import find_pattern
-import os
 
+app = FastAPI(max_upload_size=10000000)
 
-app = FastAPI()
-  
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.get("/")
-def read_form(request: Request):
-    return  {"request": request}
+class ImageData(BaseModel):
+    filename: str
+    content_type: str
+    content: bytes
 
+class ResponseModel(BaseModel):
+    name: str
+    dob: str
+    gender: str
+    aadhar_number: str
+    address: str
+
+# This is our API endpoint
 @app.post("/upload/")
-async def upload_images(request: Request, files: List[UploadFile] = File(...)):
-    data=""
+async def upload_images(files: List[UploadFile] = File(...), request: Request = None):
+    data = ""
 
     for file in files:
-        # Read the image
-        
-        img = Image.open(BytesIO(await file.read()))
+        try:
+            img = Image.open(BytesIO(await file.read()))
 
-        # Perform OCR using pytesseract
-        sampledata = pytesseract.image_to_string(img)
+            # Perform OCR using pytesseract
+            sampledata = pytesseract.image_to_string(img)
 
-        data += sampledata
+            data += sampledata
+        except Exception as e:
+            logging.error(f"Error processing image: {e}")
+            raise HTTPException(status_code=500, detail="Internal Server Error")
 
-    print(data)
-    # print(type(data))
+    # Find all kinds of Aadhaar numbers
+    result_aadhar_number = find_pattern.find_aadhaar_numbers(data)
 
-    # find all kind of aadhaar numbers
-    result_aahaar_number=find_pattern.find_aadhaar_numbers(data)
-    print(result_aahaar_number)
+    # Find all kinds of DOB patterns
+    result_dob = find_pattern.find_dob(data)
 
-    #find all kind of dob pattern 
-    result_dob=find_pattern.find_dob(data)
-    print(result_dob)
+    # Extract addresses
+    result_address = find_pattern.find_addresses(data)
 
-    #addresses getting 
-    result_address =find_pattern.find_addresses(data)
-    print(result_address)
-
-    # name pattern 2 this is completly great
+    # Extract names
     result_name = find_pattern.extract_name_from_data(data)
-    print(result_name)
 
-    #find gender pattern
+    # Find gender patterns
     result_gender = find_pattern.find_gender_patterns(data)
-    print("getting the last value :",result_gender)
-        
-    
-    return  {"request": request, "name": result_name ,
-                                                       'dob': result_dob ,"gender":result_gender,'aadhar_number':result_aahaar_number,
-                                                       'address':result_address,}
 
+    response_data = ResponseModel(
+        name=result_name,
+        dob=result_dob,
+        gender=result_gender,
+        aadhar_number=result_aadhar_number,
+        address=result_address,
+    )
 
+    return response_data
