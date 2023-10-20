@@ -10,6 +10,8 @@ import pytesseract
 from io import BytesIO
 from pattern import find_pattern
 
+pytesseract.tesseract_cmd ='C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
+
 app = FastAPI(max_upload_size=10000000)
 
 # Configure CORS
