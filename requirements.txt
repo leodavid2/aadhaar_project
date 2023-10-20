@@ -1,6 +1,6 @@
 fastapi==0.68.0
 uvicorn==0.15.0
-pytesseract==0.3.8
+tesseract==5.3.3.20231005
 Pillow==8.3.1
 pydantic==1.9.0
 python-multipart==0.0.5
