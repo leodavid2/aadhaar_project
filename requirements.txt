@@ -1,5 +1,5 @@
 fastapi==0.103.2
-uvicorn==0.21.2
+uvicorn==0.15.0
 tesseract==5.3.3.20231005
 Pillow==9.5.0
 pydantic==2.4.2
