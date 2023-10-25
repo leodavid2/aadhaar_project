@@ -4,3 +4,10 @@ tesseract==5.3.3.20231005
 Pillow==9.5.0
 pydantic==2.4.2
 python-multipart==0.0.6
+
+#loging page requirements
+fastapi==0.68.1
+passlib==1.7.4
+python-jose==3.3.0
+SQLAlchemy==1.4.25
+Jinja2==3.0.1
