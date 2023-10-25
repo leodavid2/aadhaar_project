@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .logout-form {
+            text-align: center;
+            margin-top: 20px; /* Add space from the top */
+        }
+
+        .logout-button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the Admin Page, <span id="username">{{ username }}</span>!</h1>
+        <form class="logout-form" action="/logout" method="post">
+            <button class="logout-button" type="submit">Logout</button>
+        </form>
+    </div>
+</body>
+
+</html>
