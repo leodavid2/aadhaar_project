@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Images</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+        }
+        
+        .file-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .file-item input[type="file"] {
+            border: 2px solid #000000;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 80%;
+            box-sizing: border-box;
+        }
+        
+        .file-item input[type="file"]:hover {
+            border-color: #333333;
+        }
+        
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 40%; 
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+       
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+    <h1>Onboarding form</h1>
+    <form action="/upload/" method="post" enctype="multipart/form-data">
+        <div class="file-container">
+            <div class="file-item">
+                <label for="file1">Aadhaar Front page</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file2">Aadhaar Back page</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file3">Pan Card Front</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file4">Driving License Front</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file5">Voter Id Card</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file6">Bank Passbook</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file7">Photo For Employee</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file8">Diploma Certificate</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file9">ITI Certificate</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file10">Previous Month Salary Slip</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file11">Final Covid Certificate</label>
+                <input type="file" name="files" multiple>
+            </div>
+            <div class="file-item">
+                <label for="file12">Address Proof</label>
+                <input type="file" name="files" multiple>
+            </div>
+        </div>
+        <button type="submit">Upload</button>
+    </form>
+</div>
+</body>
+
+</html>

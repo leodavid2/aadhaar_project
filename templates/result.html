@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+    <h1>Employee Onboarding Form</h1>
+
+    <form action="/submit/" method="post" enctype="multipart/form-data">
+    
+        <div class="form-group">
+        <label for="position">Position Applied For:</label>
+        <input type="text" id="position" name="position" required>
+        </div>
+
+        <div class="form-group">
+        <label for="joiningDate">Date of Joining:</label>
+        <input type="date" id="joiningDate" name="joiningDate" required>
+        </div>
+
+        <div class="form-group">
+        <label for="adminName">Admin/HR's Name:</label>
+        <input type="text" id="adminName" name="adminName" required>
+        </div>
+
+        <div class="form-group">
+        <label for="siteName">Site Name:</label>
+        <input type="text" id="siteName" name="siteName" required>
+        </div>
+
+        <div class="form-group">
+        <label for="presiteName">Previous Site Name:</label>
+        <input type="text" id="presiteName" name="presiteName" required>
+        </div>
+
+        <div class="form-group">
+        <label for="adminMobile">Admin/HR's Mobile Number:</label>
+        <input type="tel" id="adminMobile" name="adminMobile" required>
+        </div> 
+
+        <div class="form-group">
+        <label for="name">Name (as per Aadhaar):</label>
+        <input type="text" id="name" name="name"  value="{{ name }}" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="mobile">Mobile No (as per Aadhaar):</label>
+        <input type="tel" id="mobile" name="mobile" required>
+        </div> 
+
+        <div class="form-group">
+        <label for="aadhar_number">Aadhaar Number (as per Aadhaar):</label>
+        <input type="text" id="aadhar_number" name="aadhar_number" value="{{ aadhar_number }}" required>
+        </div>
+
+        <div class="form-group">
+        <label for="dob">Date of Birth (as per Aadhaar):</label>
+        <input type="text" id="dob" name="dob" value="{{ dob }}" required >
+        </div>
+
+        <div class="form-group">
+        <label for="addressPerAadhaar">Address (as per Aadhaar):</label>
+        <input type="text" id="addressPerAadhaar" name="addressPerAadhaar" value="{{ address }}" required>
+        </div>
+    
+        <div class="form-group">
+        <label for="fathersName">Father's Name (as per Aadhaar):</label>
+        <input type="text" id="fathersName" name="fathersName" required>
+        </div> 
+ 
+        <div class="form-group">
+        <label for="mothersName">Mother's Name:</label>
+        <input type="text" id="mothersName" name="mothersName" required>
+        </div>
+
+        <div class="form-group">
+        <label for="accountHolderName">Account Holder Name:</label>
+        <input type="text" id="accountHolderName" name="accountHolderName" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="accountNumber">Account Number:</label>
+        <input type="text" id="accountNumber" name="accountNumber" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="ifscCode">IFSC Code:</label>
+        <input type="text" id="ifscCode" name="ifscCode" required>
+        </div>
+
+        <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+        </div> 
+ 
+        <div class="form-group">
+        <label for="religion">Religion:</label>
+        <input type="text" id="religion" name="religion" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="esicNumber">ESIC Number:</label>
+        <input type="text" id="esicNumber" name="esicNumber" required>
+        <div>
+        
+        <div class="form-group">
+        <label for="identificationMark">Identification Mark:</label>
+        <input type="text" id="identificationMark" name="identificationMark" required>
+        <div>
+        
+        <div class="form-group">
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" name="nationality" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="referredBy">Referred By:</label>
+        <input type="text" id="referredBy" name="referredBy" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="uanNumber">UAN Number:</label>
+        <input type="text" id="uanNumber" name="uanNumber" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="height">Height:</label>
+        <input type="text" id="height" name="height" required>
+        </div>
+        
+        <div class="form-group">
+        <label for="clientName">Client Name:</label>
+        <input type="text" id="clientName" name="clientName" required>
+        </div>
+            
+        <div class="form-group">
+        <label for="recruiterName">Recruiter Name:</label>
+        <input type="text" id="recruiterName" name="recruiterName" required>
+        </div>
+
+        <div class="form-group">
+        <label for="workLocation">Work Location:</label>
+        <input type="text" id="workLocation" name="workLocation" required>
+        <div>
+        
+        <div class="form-group">
+        <label for="currentState">Current State:</label>
+        <input type="text" id="currentState" name="currentState" required>
+        <div>
+        
+        <div class="form-group">
+        <label for="currentAddress">Current Address:</label>
+        <input type="text" id="currentAddress" name="currentAddress">
+        </div>
+
+        <div class="form-group">
+        <label for="currentDistrict">Current District:</label>
+        <input type="text" id="currentDistrict" name="currentDistrict" required>
+        </div>
+
+        <div class="form-group">
+        <label for="pincode">Pincode:</label>
+        <input type="text" id="pincode" name="pincode" required>
+        </div>
+
+        <div class="form-group">
+        <label for="maritalStatus">Marital Status:</label>
+        <select id="maritalStatus" name="maritalStatus" required>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+            <option value="widowed">Widowed</option>
+        </select>
+        </div>
+
+        <div class="form-group">
+        <label for="job_Role">Job Role:</label>
+        <input type="text" id="job_Role" name="job_Role">
+        </div>
+
+        
+        <div class="form-group">
+        <label for="bloodGroup">Blood Group:</label>
+        <input type="text" id="bloodGroup" name="bloodGroup" required>
+        </div>
+
+        <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+        <label for="panNumber">PAN Number:</label>
+        <input type="text" id="panNumber" name="panNumber" required>
+
+        </div>
+        <div class="form-group">
+        <label for="drivingLicense">Driving License Number:</label>
+        <input type="text" id="drivingLicense" name="drivingLicense" required>
+        </div>
+
+        
+        <div class="form-group">
+        <label for="voterId">Voter ID:</label>
+        <input type="text" id="voterId" name="voterId" required>
+        </div>
+
+        <div class="form-group">
+        <label for="reportingManager">Reporting Manager Name:</label>
+        <input type="text" id="reportingManager" name="reportingManager" required>
+        </div> 
+
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+</body>
+
+</html>
